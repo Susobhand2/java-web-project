@@ -1,15 +1,15 @@
 pipeline{
     agent any
     stages{
-        stage('Build'){
+        stage("Build"){
             steps{
                 sh "mvn clean package"
             }
         }
-        stage('Deploy'){
+        stage("Deploy"){
             steps{
-                deploy adapters: [tomcat7(credentialsId: '3c7715c5-eb8a-48d1-ab79-aef1b35753be', path: '',
-                url: 'http://ec2-18-217-141-92.us-east-2.compute.amazonaws.com:8080/')], 
+                deploy adapters: [tomcat8(credentialsId: '42854093-ee42-4a9c-bf57-dc18c3b919e0', path: '',
+                url: 'http://ec2-3-110-49-252.ap-south-1.compute.amazonaws.com:8080/')],
                 contextPath: 'javawebapp', war: '**/java-web-project.war'
             }
         }
